@@ -1,0 +1,1 @@
+export { Main, Header, Footer, WeeklyForecast } from './Sections'

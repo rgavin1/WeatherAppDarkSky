@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  background: #000;
 }
 
 .App-logo {
@@ -35,4 +36,13 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.cardContainer1,
+.cardContainer {
+  background: #36373ae8;
+}
+
+.cardContainer1>div {
+  padding: 0 !important;
 }
