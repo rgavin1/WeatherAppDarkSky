@@ -1,24 +1,31 @@
 import React from 'react'
 import { Grid } from '@mui/material';
-import { BasicCard } from '../../../components/Cards';
+import { TodayForcastCard, BaseForcastCard } from '../../../components/Cards';
+import { weeklyforecastExample } from '../../../services/exampleJson5dayforecast';
+import { getCurrentDayMonth } from '../../../helpers/functions';
 
+// TODO: Create a list to loop through
 const index: React.FC = () => {
+    const days = weeklyforecastExample.list
+    const city = weeklyforecastExample.city
     return (
-        <Grid container spacing={2} justifyContent="space-between" style={{ marginBottom: "15px" }}>
+        <Grid container direction="row"
+            justifyContent="center"
+            alignItems="stretch" spacing={2} style={{ marginBottom: "15px" }}>
             <Grid item xs={4}>
-                <BasicCard />
+                <TodayForcastCard title="Today" data={days[0]} city={city} />
             </Grid>
             <Grid item xs={2}>
-                <BasicCard />
+                <BaseForcastCard title="Tommorrow" data={days[1]} />
             </Grid>
             <Grid item xs={2}>
-                <BasicCard />
+                <BaseForcastCard title={getCurrentDayMonth(2)} data={days[2]} />
             </Grid>
             <Grid item xs={2}>
-                <BasicCard />
+                <BaseForcastCard title={getCurrentDayMonth(3)} data={days[3]} />
             </Grid>
             <Grid item xs={2}>
-                <BasicCard />
+                <BaseForcastCard title={getCurrentDayMonth(4)} data={days[4]} />
             </Grid>
         </Grid>
     )

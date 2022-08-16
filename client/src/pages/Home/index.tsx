@@ -1,15 +1,16 @@
 import React from 'react'
-import { FullWidth } from '../../components/Cards'
+
 import { Main, WeeklyForecast } from '../../layouts'
 import { Container } from '@mui/material';
 import * as testData from '../../services/exampleJson.json';
+import { TitleWithDate, BaseTitle } from '../../components/Dividers';
 
 const index: React.FC = () => {
     return (
         <Container maxWidth="xl">
-            <FullWidth data={testData} />
+            <TitleWithDate data={testData} />
             <Main data={testData} />
-            <FullWidth />
+            <BaseTitle title="Forcast 5 days" />
             <WeeklyForecast />
         </Container>
     )

@@ -1,72 +1,30 @@
 import React from 'react'
 import { Grid } from '@mui/material'
-import { BasicCard } from '../../../components/Cards'
-
-const currentWeatherCards = [
-  {
-    title: "temp",
-    icon: "",
-    content: "20",
-    unit_of_measure: "°C"
-  },
-  {
-    title: "feels_like",
-    icon: "",
-    content: "20",
-    unit_of_measure: "°C"
-  },
-  {
-    title: "pressure",
-    icon: "",
-    content: "20",
-    unit_of_measure: "°C"
-  },
-  {
-    title: "humidity",
-    icon: "",
-    content: "50",
-    unit_of_measure: "%"
-  },
-]
+import { TemperatureCard, WindGaugeCard } from '../../../components'
+import { faPerson, faTemperatureHigh, faTemperatureLow } from '@fortawesome/free-solid-svg-icons'
 
 const Main: React.FC<{ data?: any }> = ({ data }) => {
   return (
-    <Grid container direction="row" justifyContent="space-between">
-      <Grid container xs={12} spacing={2} justifyContent="space-between" style={{ marginBottom: "15px" }}>
-        <Grid item zeroMinWidth xs={4}>
-          {/* TODO: Create another card */}
-          <BasicCard />
+    <Grid container direction="row" justifyContent="space-between" style={{ height: '100%', alignItems: "stretch" }}>
+      {/* Left Column */}
+      <Grid container xs={4} spacing={1} justifyContent="space-between" style={{ height: '100%', alignItems: "stretch" }}>
+        <Grid item zeroMinWidth xs={6} style={{ height: '100%', alignItems: "stretch" }}>
+          <TemperatureCard temperature={data?.main?.temp} title="Temperature" />
         </Grid>
-        <Grid item zeroMinWidth xs={4}>
-          <BasicCard />
+        <Grid item zeroMinWidth xs={6}>
+          <TemperatureCard temperature={data?.main?.feels_like} icon={faPerson} title="Feels Like" />
         </Grid>
-        <Grid item zeroMinWidth xs={4}>
-          <BasicCard />
+        <Grid item zeroMinWidth xs={6}>
+          <TemperatureCard temperature={data?.main?.temp_min} icon={faTemperatureLow} title="Temperature min" />
+        </Grid>
+        <Grid item zeroMinWidth xs={6}>
+          <TemperatureCard temperature={data?.main?.temp_max} icon={faTemperatureHigh} title="Temperature max" />
         </Grid>
       </Grid>
-      <Grid container xs={6} spacing={2} justifyContent="space-between">
-        <Grid item zeroMinWidth xs={6}>
-          <BasicCard data={data} />
-        </Grid>
-        <Grid item zeroMinWidth xs={6}>
-          <BasicCard />
-        </Grid>
-        <Grid item zeroMinWidth xs={6}>
-          <BasicCard />
-        </Grid>
-        <Grid item zeroMinWidth xs={6}>
-          <BasicCard />
-        </Grid>
-      </Grid>
-      <Grid container xs={6} spacing={2} justifyContent="space-between">
-        <Grid item zeroMinWidth xs={8}>
-          <BasicCard />
-        </Grid>
-        <Grid item zeroMinWidth xs={4}>
-          <BasicCard />
-        </Grid>
+      {/* Right Column */}
+      <Grid container xs={8} spacing={1} justifyContent="space-between">
         <Grid item zeroMinWidth xs={12}>
-          <BasicCard />
+          <WindGaugeCard speed={data?.wind?.speed} deg={data?.wind?.deg} />
         </Grid>
       </Grid>
     </Grid>
