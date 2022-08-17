@@ -1,3 +1,5 @@
+import { COUNTRYCODES } from "./countryCodes";
+import { FLAGS } from "./flags";
 import { CardinalDirections, Months, Days } from "./types";
 
 export const cardinalDirections: CardinalDirections[] = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"]
@@ -12,8 +14,8 @@ export const toCardinalDirection = (degreeDirection: number): string => {
 }
 export const kelvinToFahrenheit = (kelvin: number): string => {
     const celsius = (kelvin - 273.15);
-    const fahrenheit = (celsius * 1.8) + 32;
-    return `${fahrenheit.toPrecision(2)}°`;
+    const fahrenheit = (celsius * (9 / 5)) + 32;
+    return `${fahrenheit.toPrecision(3)}°`;
 }
 export const toTime = (utc: number) => {
     const date = new Date(utc);
@@ -42,4 +44,9 @@ export const getCurrentDayMonth = (additionalDay = 0): string => {
 }
 export const toMilePerHour = (metersPerSecond: number) => {
     return ((metersPerSecond * 2.236936) / 100).toPrecision(2);
+}
+export const getCountryFlag = (countryCode: string): string => {
+    const country = COUNTRYCODES.find(({ code }) => code === countryCode);
+    if (!country) return ""
+    return FLAGS[country.name]
 }

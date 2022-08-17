@@ -9,7 +9,7 @@ const index: React.FC<{ data?: any }> = ({ data }) => {
             <Grid container p={2} justifyContent="space-between">
                 <Grid item xs={6}>
                     <Typography style={{ textAlign: 'initial' }} variant='h4' component="div">
-                        {data?.name}
+                        {data?.name} ({data?.sys?.country})
                     </Typography>
                     <Typography variant='subtitle2' component="div" style={{ textAlign: 'initial' }}>
                         {convertUTCDateToLocalDate(data?.dt)}

@@ -19,6 +19,7 @@
     "@types/react-dom": "^18.0.0",
     "axios": "^0.27.2",
     "dotenv": "^16.0.1",
+    "lodash.debounce": "^4.0.8",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-gauge-chart": "^0.4.0",
@@ -51,6 +52,7 @@
     ]
   },
   "devDependencies": {
+    "@types/lodash.debounce": "^4.0.7",
     "@types/react-gauge-chart": "^0.3.1"
   }
 }
