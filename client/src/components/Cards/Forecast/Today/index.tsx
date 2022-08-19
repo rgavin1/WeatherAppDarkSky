@@ -10,8 +10,8 @@ const index: React.FC<{ data: any, title: string, city?: any }> = ({ data, title
     const [weatherInformation] = weather;
     const { main, icon } = weatherInformation;
 
-    const sunrise = city?.sunrise;
-    const sunset = city?.sunset;
+    const sunrise = city?.sunrise || "-";
+    const sunset = city?.sunset || "-";
 
     const showSunsetTime = title === 'Today'
     return (

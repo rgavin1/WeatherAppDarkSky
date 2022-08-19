@@ -33,7 +33,7 @@ const Header: React.FC<{ setCurrentWeatherForCountry: (data: ResponseData) => vo
 
     const fetchCityByCoordinates = async (latitude: number, longitude: number) => {
         try {
-            const { data } = await axios.get(`http://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=20&appid=${API_KEY}`)
+            const { data } = await axios.get(`https://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=20&appid=${API_KEY}`)
             setSearchedCities(data)
         } catch (error) {
             console.log("Error: ", error)
@@ -43,7 +43,7 @@ const Header: React.FC<{ setCurrentWeatherForCountry: (data: ResponseData) => vo
 
     const fetchCityByName = async () => {
         try {
-            const { data } = await axios.get(`http://api.openweathermap.org/geo/1.0/direct?q=${query}&limit=50&appid=${API_KEY}`)
+            const { data } = await axios.get(`https://api.openweathermap.org/geo/1.0/direct?q=${query}&limit=50&appid=${API_KEY}`)
             setSearchedCities(data)
         } catch (error) {
             console.log("Error: ", error)

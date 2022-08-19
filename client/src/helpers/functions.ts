@@ -17,7 +17,8 @@ export const kelvinToFahrenheit = (kelvin: number): string => {
     const fahrenheit = (celsius * (9 / 5)) + 32;
     return `${fahrenheit.toPrecision(3)}°`;
 }
-export const toTime = (utc: number) => {
+export const toTime = (utc: number | string) => {
+    if (utc === "-") return utc
     const date = new Date(utc);
     return `${date.getHours() - 12}:${date.getMinutes()}`;
 }
